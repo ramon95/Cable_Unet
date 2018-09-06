@@ -4,7 +4,7 @@
       <div class="sidebar-wrapper">
         <div class="logo">
           <a href="#" class="simple-text">
-            Cable Unet
+            <?php echo $_SESSION['usuario'] ?>
           </a>
         </div>
         <ul class="nav">
