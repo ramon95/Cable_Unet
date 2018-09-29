@@ -5,6 +5,8 @@ spl_autoload_register(function ($class) {
     return require DIR . "/Cable_Unet/class/$class/$class.class.php";
   elseif (strpos($class, 'Message') !== false)
     require DIR . "/Cable_Unet/class/Message/$class.class.php";
-  else
-    require DIR . "/Cable_Unet/class/Article/$class.class.php";
+  elseif (strpos($class, 'Dias') !== false)
+    require DIR . "/Cable_Unet/class/Dias/$class.class.php";
+  elseif (strpos($class, 'Horas') !== false)
+    require DIR . "/Cable_Unet/class/Horas/$class.class.php";
 });

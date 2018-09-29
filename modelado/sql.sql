@@ -152,6 +152,7 @@ CREATE TABLE IF NOT EXISTS `cable_unet`.`Dias` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+INSERT INTO `dias` (`id`, `descripcion`) VALUES ('1', 'Lunes'), ('2', 'Martes'), ('3', 'Miercoles'), ('4', 'Jueves'), ('5', 'Viernes'), ('6', 'Sabado'), ('7', 'Domingo');
 
 -- -----------------------------------------------------
 -- Table `cable_unet`.`DiaSemanas`
@@ -184,6 +185,8 @@ CREATE TABLE IF NOT EXISTS `cable_unet`.`Horas` (
   `descripcion` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
+INSERT INTO `horas` (`id`, `descripcion`) VALUES ('1', '01-02 AM'), ('2', '02-03 AM'), ('3', '03-04 AM'), ('4', '04-05 AM'), ('5', '05-06 AM'), ('6', '06-07 AM'), ('7', '07-08 AM'), ('8', '08-09 AM'), ('9', '09-10 AM'), ('10', '10-11 AM'), ('11', '11-12 AM'), ('12', '12-13 PM'), ('13', '13-14 PM'), ('14', '14-15 PM'), ('15', '15-16 PM'), ('16', '16-17 PM'), ('17', '17-18 PM'), ('18', '18-19 PM'), ('19', '19-20 PM'), ('20', '20-21 PM'), ('21', '21-22 PM'), ('22', '22-23 PM'), ('23', '23-24 PM'), ('24', '24-01 PM');
 
 
 -- -----------------------------------------------------

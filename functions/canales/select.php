@@ -1,4 +1,4 @@
-<?php 
+<?php
 require '../autoload_class.php';
 require '../validate_session.php';
 

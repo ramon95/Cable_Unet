@@ -65,7 +65,7 @@ require 'sidebar.php';
                 </div>
                 <div class="collapse" id="form0">
                   <hr>
-                  <form method="POST" action="" accept-charset="UTF-8">
+                  <form method="POST" action="../functions/canales/insert.php" accept-charset="UTF-8">
                     <div class="row">
                       <div class="form-group col-md-6">
                         <label for="NombreCanal">Nombre del canal</label>
@@ -77,43 +77,12 @@ require 'sidebar.php';
                       </div>
                       <div class="form-group col-md-6">
                         <label for="DiasSemana">Dias a la Semana</label>
-                         <select class="form-control select2 select2-hidden-accessible" name="DiasSemana" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true" required>
-                          <option value="1">Lunes</option>
-                          <option value="2">Martes</option>
-                          <option value="3">Miercoles</option>
-                          <option value="4">Jueves</option>
-                          <option value="5">Viernes</option>
-                          <option value="6">Sabado</option>
-                          <option value="7">Domingo</option>
+                         <select class="form-control select2 select2-hidden-accessible" name="DiasSemana" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true" required id="DiasSemana">
                         </select>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="HorasDia">Horas al dia</label>
-                         <select class="form-control select2 select2-hidden-accessible" name="HorasDia" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true" required>
-                          <option value="1">01-02 AM</option>
-                          <option value="2">02-03 AM</option>
-                          <option value="3">03-04 AM</option>
-                          <option value="4">04-05 AM</option>
-                          <option value="5">05-06 AM</option>
-                          <option value="6">06-07 AM</option>
-                          <option value="8">07-08 AM</option>
-                          <option value="9">08-09 AM</option>
-                          <option value="10">09-10 AM</option>
-                          <option value="11">10-11 AM</option>
-                          <option value="12">11-12 AM-PM</option>
-                          <option value="13">12-13 PM</option>
-                          <option value="14">13-14 PM</option>
-                          <option value="15">14-15 PM</option>
-                          <option value="16">15-16 PM</option>
-                          <option value="17">16-17 PM</option>
-                          <option value="18">17-18 PM</option>
-                          <option value="19">18-19 PM</option>
-                          <option value="20">19-20 PM</option>
-                          <option value="21">20-21 PM</option>
-                          <option value="22">21-22 PM</option>
-                          <option value="23">22-23 PM</option>
-                          <option value="24">23-24 PM</option>
-                          <option value="25">24-01 AM</option>
+                         <select class="form-control select2 select2-hidden-accessible" name="HorasDia" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true" required id="HorasDia">
                         </select>
                       </div>
                     </div>
@@ -153,3 +122,41 @@ require 'sidebar.php';
       </div>
     </div>
     <?php include 'footer.php'; ?>
+  </body>
+
+    <!--   Core JS Files   -->
+  <script src="../assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+  <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+  <!--  Charts Plugin -->
+  <script src="../assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/bootstrap-notify.js"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+  <script src="../assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+
+  <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+  <script src="../assets/js/demo.js"></script>
+
+  <!-- script para el select 2 -->
+  <script src="../js/select2.full.min.js"></script>
+
+  <!-- script para separar los numeros en unidades -->
+  <script src="../assets/js/jquery.inputmask.bundle.js" charset="utf-8"></script>
+  <script src="../js/SelectCanales/SelectCanales.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $('.select2').select2();
+    //enmascaramiento
+    $('.trucated').inputmask("numeric", {
+      radixPoint: ",",
+      groupSeparator: ".",
+      digits: 2,
+      autoGroup: true,
+      rightAlign: false,
+      oncleared: function () { self.Value(''); }
+    });
+  </script>
+
+  </html>
