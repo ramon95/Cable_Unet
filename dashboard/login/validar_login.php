@@ -18,9 +18,11 @@ $login->setPassword($password);
 $row = $login->signIn();
 if ($row){
   $session = new Session();
+  //primero el nombre de la variable que uso y luego el nombre de la BD
   $session->addValue('email', $row['email']);
   $session->addValue('id', $row['id']);
-  // $session->addValue('usuario', $row['usuario_dev']);
+  $session->addValue('nombre', $row['nombre']);
+  $session->addValue('apellido', $row['apellido']);
   header('location: ../dashboard.php');
 } else {
   header('location: login.php?message=Usuario o contraseña incorrectos&type=warningMessage');

@@ -1,15 +1,15 @@
-<?php 
+<?php
 require 'header.php';
 require 'navbar.php';
+require 'sidebar.php';
 ?>
     <div class="container-fluid">
       <div class="row">
-        <?php require 'sidebar.php'; ?>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">New Post</h2>
+          <h2 class="sub-header">Canales</h2>
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-7 col-md-offset-2 main">
           <form enctype="multipart/form-data" action="../functions/article/insert.php" method="POST">
             <div class="form-group">
@@ -39,6 +39,6 @@ require 'navbar.php';
             <button type="button" id="submit_categorie" class="btn btn-default btn-block">Save</button>
           </form>
         </div>
-      </div>
+      </div> -->
     </div>
 <?php require 'footer.php'; ?>
