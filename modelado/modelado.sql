@@ -8,138 +8,140 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema cable_unet
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema cable_unet
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `cable_unet` DEFAULT CHARACTER SET utf8 ;
+USE `cable_unet` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Rol`
+-- Table `cable_unet`.`Rol`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Rol` (
-  `idRol` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `cable_unet`.`Rol` (
+  `id` INT NOT NULL,
   `descripcion` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idRol`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Usuario`
+-- Table `cable_unet`.`Usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Usuario` (
-  `idUsuario` INT NOT NULL COMMENT 'Llave primaria de la tabla usuario',
+CREATE TABLE IF NOT EXISTS `cable_unet`.`Usuario` (
+  `id` INT NOT NULL COMMENT 'Llave primaria de la tabla usuario',
   `email` VARCHAR(45) NOT NULL COMMENT 'correo electronico para identificacion del login',
-  `password` VARCHAR(45) NOT NULL COMMENT 'contraseña para ingresar al login',
+  `password` VARCHAR(200) NOT NULL COMMENT 'contraseña para ingresar al login',
   `nombre` VARCHAR(45) NOT NULL,
   `apellido` VARCHAR(45) NOT NULL,
   `cedula` INT NULL,
   `rif` INT NULL,
   `direccion` VARCHAR(45) NOT NULL,
-  `Rol_idRol` INT NOT NULL,
-  PRIMARY KEY (`idUsuario`),
-  INDEX `fk_Usuario_Rol1_idx` (`Rol_idRol` ASC),
+  `Rol_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Usuario_Rol1_idx` (`Rol_id` ASC),
   CONSTRAINT `fk_Usuario_Rol1`
-    FOREIGN KEY (`Rol_idRol`)
-    REFERENCES `mydb`.`Rol` (`idRol`)
+    FOREIGN KEY (`Rol_id`)
+    REFERENCES `cable_unet`.`Rol` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Servicios`
+-- Table `cable_unet`.`Servicios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Servicios` (
-  `idServicios` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `cable_unet`.`Servicios` (
+  `id` INT NOT NULL,
   `fechaIncio` DATE NULL,
   `total` DECIMAL(8,2) NULL,
   `fechaCorte` DATE NULL COMMENT 'Fecha en la que se cobra el plan nuevamente ',
-  `Usuario_idUsuario` INT NOT NULL,
-  PRIMARY KEY (`idServicios`),
-  INDEX `fk_Servicios_Usuario_idx` (`Usuario_idUsuario` ASC),
+  `Usuario_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Servicios_Usuario_idx` (`Usuario_id` ASC),
   CONSTRAINT `fk_Servicios_Usuario`
-    FOREIGN KEY (`Usuario_idUsuario`)
-    REFERENCES `mydb`.`Usuario` (`idUsuario`)
+    FOREIGN KEY (`Usuario_id`)
+    REFERENCES `cable_unet`.`Usuario` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`TipoPlan`
+-- Table `cable_unet`.`TipoPlan`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`TipoPlan` (
-  `idTipoPlan` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `cable_unet`.`TipoPlan` (
+  `id` INT NOT NULL,
   `descripcion` VARCHAR(50) NOT NULL,
   `costoUnitario` DECIMAL(8,2) NULL,
-  PRIMARY KEY (`idTipoPlan`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Planes`
+-- Table `cable_unet`.`Planes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Planes` (
-  `idPlanes` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `cable_unet`.`Planes` (
+  `id` INT NOT NULL,
   `precio` DECIMAL(8,2) NULL,
   `costo` DECIMAL(8,2) NULL,
-  `Servicios_idServicios` INT NOT NULL,
-  `TipoPlan_idTipoPlan` INT NOT NULL,
-  PRIMARY KEY (`idPlanes`),
-  INDEX `fk_Planes_Servicios1_idx` (`Servicios_idServicios` ASC),
-  INDEX `fk_Planes_TipoPlan1_idx` (`TipoPlan_idTipoPlan` ASC),
+  `Servicios_id` INT NOT NULL,
+  `TipoPlan_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Planes_Servicios1_idx` (`Servicios_id` ASC),
+  INDEX `fk_Planes_TipoPlan1_idx` (`TipoPlan_id` ASC),
   CONSTRAINT `fk_Planes_Servicios1`
-    FOREIGN KEY (`Servicios_idServicios`)
-    REFERENCES `mydb`.`Servicios` (`idServicios`)
+    FOREIGN KEY (`Servicios_id`)
+    REFERENCES `cable_unet`.`Servicios` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Planes_TipoPlan1`
-    FOREIGN KEY (`TipoPlan_idTipoPlan`)
-    REFERENCES `mydb`.`TipoPlan` (`idTipoPlan`)
+    FOREIGN KEY (`TipoPlan_id`)
+    REFERENCES `cable_unet`.`TipoPlan` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Canales`
+-- Table `cable_unet`.`Canales`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Canales` (
-  `idCanales` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `cable_unet`.`Canales` (
+  `id` INT NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `horarioDia` VARCHAR(45) NOT NULL,
   `horarioHora` VARCHAR(45) NOT NULL,
   `precio` DECIMAL(8,2) NULL,
-  PRIMARY KEY (`idCanales`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`PlanCanales`
+-- Table `cable_unet`.`PlanCanales`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`PlanCanales` (
-  `idPlanCanales` INT NOT NULL,
-  `Canales_idCanales` INT NOT NULL,
-  `Planes_idPlanes` INT NOT NULL,
-  PRIMARY KEY (`idPlanCanales`, `Planes_idPlanes`),
-  INDEX `fk_PlanCanales_Canales1_idx` (`Canales_idCanales` ASC),
-  INDEX `fk_PlanCanales_Planes1_idx` (`Planes_idPlanes` ASC),
+CREATE TABLE IF NOT EXISTS `cable_unet`.`PlanCanales` (
+  `id` INT NOT NULL,
+  `Canales_id` INT NOT NULL,
+  `Planes_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `Planes_id`),
+  INDEX `fk_PlanCanales_Canales1_idx` (`Canales_id` ASC),
+  INDEX `fk_PlanCanales_Planes1_idx` (`Planes_id` ASC),
   CONSTRAINT `fk_PlanCanales_Canales1`
-    FOREIGN KEY (`Canales_idCanales`)
-    REFERENCES `mydb`.`Canales` (`idCanales`)
+    FOREIGN KEY (`Canales_id`)
+    REFERENCES `cable_unet`.`Canales` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_PlanCanales_Planes1`
-    FOREIGN KEY (`Planes_idPlanes`)
-    REFERENCES `mydb`.`Planes` (`idPlanes`)
+    FOREIGN KEY (`Planes_id`)
+    REFERENCES `cable_unet`.`Planes` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO `rol` (`id`, `descripcion`) VALUES ('1', 'Administrador');
+INSERT INTO `usuario` (`id`, `email`, `password`, `nombre`, `apellido`, `cedula`, `rif`, `direccion`, `Rol_id`) VALUES ('1', 'admin@admin.com', '$2y$10$eXVH.V6Trtz5g.DgbmIlduYGVCdbVN2cIH1FZRxAkEYQP4SC.oRhy', 'Admin', 'Apellido', '12346598', '123456798', 'San Cristobal', '1');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
