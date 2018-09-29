@@ -19,19 +19,29 @@
   <!--  Notifications Plugin    -->
   <script src="../assets/js/bootstrap-notify.js"></script>
 
-  <!--  Google Maps Plugin    -->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
   <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="../assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
 
+<!-- script para el select 2 -->
+<script src="../js/select2.full.min.js"></script>
+
+<!-- script para separar los numeros en unidades -->
+<script src="../assets/js/jquery.inputmask.bundle.js" charset="utf-8"></script>
+
 <script type="text/javascript">
-    $(document).ready(function(){
-        demo.initChartist();
-    });
+  $('.select2').select2();
+  //enmascaramiento
+  $('.trucated').inputmask("numeric", {
+    radixPoint: ",",
+    groupSeparator: ".",
+    digits: 2,
+    autoGroup: true,
+    rightAlign: false,
+    oncleared: function () { self.Value(''); }
+  });
 </script>
 
 </html>

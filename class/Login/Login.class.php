@@ -35,7 +35,7 @@ class Login
 
   public function getQueryResult (): mysqli_result
   {
-    $query = "SELECT * FROM `usuario` WHERE email = '$this->email'";
+    $query = "SELECT * FROM `usuarios` WHERE email = '$this->email'";
     return $this->con->query($query);
   }
 

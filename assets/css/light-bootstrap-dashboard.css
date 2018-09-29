@@ -3275,7 +3275,7 @@ fieldset[disabled] .btn-neutral.active {
         display: none !important;
     }
     .card form [class*="col-"] {
-        padding: 6px;
+        padding: 15px;
     }
     .card form [class*="col-"]:first-child {
         padding-left: 15px;
