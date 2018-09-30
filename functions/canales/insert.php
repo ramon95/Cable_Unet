@@ -1,27 +1,23 @@
-<?php 
+<?php
 require '../autoload_class.php';
-require '../validate_session.php';
-require '../files/files.php';
 
-if (! validar($_FILES)) {
-  header('location: ../../dashboard/post.php?message=No se seleccionó imagen');
-  exit();
-}
+  $canal = new Canal(new Conexion);
+  $canal->setNombre($_POST['NombreCanal']);
+  /////////////////////////////////////////
+  $numero = $_POST['PrecioCanal'];
+  $separar = explode('.',$numero);
+  $numero = '';
+  for ($i=0; $i < sizeof($separar); $i++) {
+    $numero .= $separar[$i];
+  }
+  $separar = str_replace(",", ".", $numero);
+  $numero = (float)$separar;
 
-$img = upload($_FILES);
-
-$article = new Article(new Conexion);
-$article->setTitle($_POST['title']);
-$article->setAuthor($session->getValue('usuario'));
-$article->setCategorieId($_POST['categorie_id']);
-$article->setContent($_POST['content']);
-$article->setImg($img);
-
-$cliente = new Client($article);
-
-if ($cliente->operate('insert') > 0){
-  header('location: ../../dashboard/post.php?message=Se insertó correctamente');
-  exit();
-}
-
-header('location: ../../dashboard/post.php?message=Hubo un error al guardar el articulo :(');
+  $canal->setPrecio($numero);
+  /////////////////////////////////////////////
+  if ($canal->insert()){
+    header('location: ../../dashboard/canales.php?message=Se insertó correctamente');
+    exit();
+  }
+   header('location: ../../dashboard/canales.php?message=Hubo un error al guardar el canal :(');
+?>

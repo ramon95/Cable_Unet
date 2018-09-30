@@ -6,9 +6,7 @@ class Canal
 {
   public $con;
   public $nombre;
-  public $canal_id;
-  public $content;
-  public $img;
+  public $precio;
 
   public function __construct(Conexion $con)
   {
@@ -21,38 +19,20 @@ class Canal
     $this->nombre = ucwords($this->nombre);
   }
 
-  public function setCategorieId(int $categorie_id)
+  public function setPrecio(float $precio)
   {
-    $this->categorie_id = $this->con->real_escape_string($categorie_id);
-  }
-
-  public function setContent(string $content)
-  {
-    $this->content = $this->con->real_escape_string($content);
-  }
-
-  public function setImg(string $img)
-  {
-    $this->img = $this->con->real_escape_string($img);
-  }
-
-  public function setArticleId(int $article_id)
-  {
-    $this->article_id = $this->con->real_escape_string($article_id);
+    $this->precio = $this->con->real_escape_string($precio);
   }
 
   public function select(): mysqli_result
   {
-    $query = "SELECT * FROM `articulo`";
-    if($this->article_id){
-      $query .= "WHERE `articulo_id` = $this->article_id";
-    }
+    $query = "SELECT * FROM `canales`";
     return $this->con->query($query);
   }
 
   public function insert(): int
   {
-    $query = "INSERT INTO `articulo`(`categoria_id`, `autor`, `titulo`, `contenido`, `fecha`, `img`) VALUES ($this->categorie_id, '$this->author', '$this->title', '$this->content', '". date('Y-m-d') . "', '$this->img')";
+    $query = "INSERT INTO `canales`(`nombre`, `precio`) VALUES ('$this->nombre',$this->precio)";
     $this->con->query($query);
     return $this->con->affected_rows;
   }

@@ -46,6 +46,10 @@ require 'sidebar.php';
 <?php
   include 'header.php';
   include 'sidebar.php';
+
+  $message = isset($_GET['message']) && isset($_GET['type']) ? MessageFactory::createMessage($_GET['type']) : false;
+
+  $message_out = $message ? $message->getMessage($_GET['message']) :'';
 ?>
   <div class="main-panel">
     <?php include 'navbar.php' ?>
@@ -55,6 +59,7 @@ require 'sidebar.php';
           <div class="col-md-12">
             <div class="card">
               <div class="header">
+                <?php echo $message_out; ?>
                 <h4 class="title">Canales</h4>
               </div>
               <div class="content">
@@ -87,7 +92,7 @@ require 'sidebar.php';
                       </div>
                     </div>
                     <div class="form-group">
-                      <button class="btn btn-success" type="submit" id="btnRegis"><i class="fa  fa-upload"></i> Crear</button>
+                      <button class="btn btn-success" type="submit"><i class="fa  fa-upload"></i> Crear</button>
                     </div>
                   </form>
                 </div>
