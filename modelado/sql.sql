@@ -21,7 +21,7 @@ USE `cable_unet` ;
 -- Table `cable_unet`.`Rol`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cable_unet`.`Rol` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `descripcion` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -32,7 +32,7 @@ INSERT INTO `rol` (`id`, `descripcion`) VALUES ('1', 'Administrador');
 -- Table `cable_unet`.`Usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cable_unet`.`Usuarios` (
-  `id` INT NOT NULL COMMENT 'Llave primaria de la tabla usuario',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT 'Llave primaria de la tabla usuario',
   `email` VARCHAR(45) NOT NULL COMMENT 'correo electronico para identificacion del login',
   `password` VARCHAR(200) NOT NULL COMMENT 'contraseña para ingresar al login',
   `nombre` VARCHAR(45) NOT NULL,
@@ -56,7 +56,7 @@ INSERT INTO `usuarios` (`id`, `email`, `password`, `nombre`, `apellido`, `cedula
 -- Table `cable_unet`.`Servicios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cable_unet`.`Servicios` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `fechaIncio` DATE NULL,
   `total` DECIMAL(8,2) NULL,
   `fechaCorte` DATE NULL COMMENT 'Fecha en la que se cobra el plan nuevamente ',
@@ -75,7 +75,7 @@ ENGINE = InnoDB;
 -- Table `cable_unet`.`TipoPlan`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cable_unet`.`TipoPlan` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `descripcion` VARCHAR(50) NOT NULL,
   `costoUnitario` DECIMAL(8,2) NULL,
   PRIMARY KEY (`id`))
@@ -86,7 +86,7 @@ ENGINE = InnoDB;
 -- Table `cable_unet`.`Planes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cable_unet`.`Planes` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `precio` DECIMAL(8,2) NULL,
   `costo` DECIMAL(8,2) NULL,
   `Servicios_id` INT NOT NULL,
@@ -111,7 +111,7 @@ ENGINE = InnoDB;
 -- Table `cable_unet`.`Canales`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cable_unet`.`Canales` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `precio` DECIMAL(8,2) NULL,
   PRIMARY KEY (`id`))
@@ -122,7 +122,7 @@ ENGINE = InnoDB;
 -- Table `cable_unet`.`PlanCanales`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cable_unet`.`PlanCanales` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `Canales_id` INT NOT NULL,
   `Planes_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -145,7 +145,7 @@ ENGINE = InnoDB;
 -- Table `cable_unet`.`Dias`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cable_unet`.`Dias` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `descripcion` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -156,7 +156,7 @@ INSERT INTO `dias` (`id`, `descripcion`) VALUES ('1', 'Lunes'), ('2', 'Martes'),
 -- Table `cable_unet`.`DiaSemanas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cable_unet`.`DiaSemanas` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `Canales_id` INT NOT NULL,
   `Dias_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -179,7 +179,7 @@ ENGINE = InnoDB;
 -- Table `cable_unet`.`Horas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cable_unet`.`Horas` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `descripcion` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -190,7 +190,7 @@ INSERT INTO `horas` (`id`, `descripcion`) VALUES ('1', '01-02 AM'), ('2', '02-03
 -- Table `cable_unet`.`HoraDias`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cable_unet`.`HoraDias` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `Horas_id` INT NOT NULL,
   `Canales_id` INT NOT NULL,
   PRIMARY KEY (`id`),

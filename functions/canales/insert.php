@@ -15,9 +15,7 @@ require '../autoload_class.php';
 
   $canal->setPrecio($numero);
   /////////////////////////////////////////////
-  if ($canal->insert()){
-    header('location: ../../dashboard/canales.php?message=Se insertó correctamente');
-    exit();
-  }
-   header('location: ../../dashboard/canales.php?message=Hubo un error al guardar el canal :(');
+  $canal->insert();
+
+  // var_dump($res);
 ?>
