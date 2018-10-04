@@ -4,6 +4,7 @@
 */
 class Canal
 {
+  public $id;
   public $con;
   public $nombre;
   public $precio;
@@ -22,6 +23,11 @@ class Canal
   public function setPrecio(float $precio)
   {
     $this->precio = $this->con->real_escape_string($precio);
+  }
+
+  public function setId(int $id)
+  {
+    $this->id = $this->con->real_escape_string($id);
   }
 
   public function select(): mysqli_result
@@ -52,7 +58,7 @@ class Canal
 
   public function delete(): int
   {
-    $query = "DELETE FROM `articulo` WHERE `articulo_id` = $this->article_id";
+    $query = "DELETE FROM `canales` WHERE `id` = $this->id";
     $this->con->query($query);
     return $this->con->affected_rows;
   }
