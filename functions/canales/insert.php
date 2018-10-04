@@ -1,6 +1,9 @@
 <?php
 require '../autoload_class.php';
+require '../../class/DiaSemana/DiaSemana.class.php';
+require '../../class/HoraDia/HoraDia.class.php';
 
+  //Creacion del canal
   $canal = new Canal(new Conexion);
   $canal->setNombre($_POST['NombreCanal']);
   /////////////////////////////////////////
@@ -15,7 +18,24 @@ require '../autoload_class.php';
 
   $canal->setPrecio($numero);
   /////////////////////////////////////////////
-  $canal->insert();
+  $id = $canal->insert();
 
-  // var_dump($res);
+  //Asociacion de los dias de la semana
+  foreach ($_POST['DiasSemana'] as $dias) {
+    $dia = new DiasSemana(new Conexion);
+    $dia->setCanalId($id);
+    $dia->setDiaId($dias);
+    $dia->insert();
+  }
+
+  //Asociacion de las horas al dia
+  foreach ($_POST['HorasDia'] as $horas) {
+    $hora = new HoraDia(new Conexion);
+    $hora->setCanalId($id);
+    $hora->setHoraId($horas);
+    $hora->insert();
+  }
+
+  header('location: ../../dashboard/canales.php');
+
 ?>

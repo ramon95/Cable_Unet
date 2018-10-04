@@ -33,7 +33,10 @@ class Canal
   public function insert(): int
   {
     $query = "INSERT INTO `canales`(`nombre`, `precio`) VALUES ('$this->nombre',$this->precio)";
-    return $this->con->query($query);
+    if($this->con->query($query)){
+      return $last_id = $this->con->insert_id;
+    }
+    return 0;
   }
 
   public function update(): int

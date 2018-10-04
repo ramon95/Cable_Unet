@@ -4,7 +4,6 @@
   require '../functions/autoload_class.php';
 
   $message = isset($_GET['message']) && isset($_GET['type']) ? MessageFactory::createMessage($_GET['type']) : false;
-
   $message_out = $message ? $message->getMessage($_GET['message']) :'';
 ?>
   <div class="main-panel">
@@ -37,12 +36,12 @@
                       </div>
                       <div class="form-group col-md-6">
                         <label for="DiasSemana">Dias a la Semana</label>
-                         <select class="form-control select2 select2-hidden-accessible" name="DiasSemana" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true" required id="DiasSemana">
+                         <select class="form-control select2 select2-hidden-accessible" name="DiasSemana[]" multiple style="width: 100%;" tabindex="-1" aria-hidden="true" required id="DiasSemana">
                         </select>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="HorasDia">Horas al dia</label>
-                         <select class="form-control select2 select2-hidden-accessible" name="HorasDia" multiple="" style="width: 100%;" tabindex="-1" aria-hidden="true" required id="HorasDia">
+                         <select class="form-control select2 select2-hidden-accessible" name="HorasDia[]" multiple style="width: 100%;" tabindex="-1" aria-hidden="true" required id="HorasDia">
                         </select>
                       </div>
                     </div>
@@ -57,7 +56,8 @@
                     <tr>
                       <th>Nombre</th>
                       <th>Precio</th>
-                      <!-- <th>Accion</th> -->
+                      <th>Editar</th>
+                      <th>Eliminar</th>
                     </tr>
                   </thead>
                   <tbody id="canales">
@@ -89,11 +89,12 @@
   <script src="../assets/js/demo.js"></script>
 
   <!-- script para el select 2 -->
-  <script src="../js/select2.full.min.js"></script>
+  <script src="../assets/js/select2.full.min.js"></script>
 
   <!-- script para separar los numeros en unidades -->
   <script src="../assets/js/jquery.inputmask.bundle.js" charset="utf-8"></script>
-  <script src="../js/SelectCanales/SelectCanales.js" charset="utf-8"></script>
+  <script src="../assets/js/SelectCanales/SelectCanales.js" charset="utf-8"></script>
+  <script src="../assets/js/Canales/select.js" charset="utf-8"></script>
   <script type="text/javascript">
     $('.select2').select2();
     //enmascaramiento

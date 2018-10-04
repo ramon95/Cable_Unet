@@ -7,7 +7,7 @@ $(document).ready(function(){
       $('#DiasSemana').append(result)
     })
     .fail(function(){
-      alert('Hubo un error al actualizar las categorías :( ')
+      console.log('error ')
     })
     //////////////////////////////////////Ajax para llenar el select de horas///////////////////////////////////////////////////////////
     $.ajax({
@@ -17,16 +17,6 @@ $(document).ready(function(){
       $('#HorasDia').append(result)
     })
     .fail(function(){
-      alert('Hubo un error al actualizar las categorías :( ')
-    })
-    //////////////////////////////////////Ajax para llenar la tabla de caneles//////////////////////////////////////////////////////////
-    $.ajax({
-      url: '../functions/canales/select.php',
-    })
-    .done(function(result) {
-      console.log("success");
-    })
-    .fail(function() {
-      console.log("error");
+      console.log('error ')
     })
 })
