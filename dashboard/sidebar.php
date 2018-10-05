@@ -18,6 +18,12 @@
             <p>Canales</p>
           </a>
         </li>
+        <li>
+          <a href="Creartelefonia.php">
+            <i class="pe-7s-phone"></i>
+            <p>Telefonia</p>
+          </a>
+        </li>
       </ul>
     </div>
   </div>

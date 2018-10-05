@@ -17,11 +17,11 @@
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="NombreCanal">Nombre del canal</label>
-                      <input type="text" name="NombreCanal" class="form-control" required maxlength="45">
+                      <input type="text" name="NombreCanal" class="form-control" required maxlength="45" id="nombre">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="PrecioCanal">Precio del canal</label>
-                      <input type="text" name="PrecioCanal" class="form-control trucated" required maxlength="45">
+                      <input type="text" name="PrecioCanal" class="form-control trucated" required maxlength="45" id="precio">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="DiasSemana">Dias a la Semana</label>
@@ -82,21 +82,26 @@
     //Traer la informacion del canal
     ruta = $(location).attr('search');
     separar = ruta.split('=');
-    id = separar[1];
+    id = parseInt(separar[1]);
     $.ajax({
       type: 'POST',
       url: '../functions/canales/select_by_id.php',
       data: {id: id}
     })
     .done(function(result) {
-      console.log(result);
+      var obj = $.parseJSON(result);
+      $('#nombre').val(obj.nombre);
+      $('#precio').val(obj.precio);
+
     })
     .fail(function() {
       console.log("error");
     })
     //////////////////////////////////////Ajax para llenar el select de dias///////////////////////////////////////////////////////////
     $.ajax({
-      url: '../functions/dias/select.php'
+      type: 'POST',
+      url: '../functions/dias/select_by_id.php',
+      id: {id: id}
     })
     .done(function(result){
       $('#DiasSemana').append(result)

@@ -1,5 +1,6 @@
 <?php
 require '../autoload_class.php';
+require '../../class/DiaSemana/DiaSemana.class.php';
 
 function selectDias(){
   $dias = new Dias(new Conexion);
