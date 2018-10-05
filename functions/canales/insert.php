@@ -36,6 +36,6 @@ require '../../class/HoraDia/HoraDia.class.php';
     $hora->insert();
   }
 
-  header('location: ../../dashboard/canales.php');
+  header('location: ../../dashboard/Crearcanales.php');
 
 ?>

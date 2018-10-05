@@ -7,13 +7,13 @@
       </div>
       <ul class="nav">
         <li class="active">
-          <a href="/Cable_Unet/dashboard/dashboard.php">
+          <a href="dashboard.php">
             <i class="pe-7s-graph"></i>
             <p>Inicio</p>
           </a>
         </li>
         <li>
-          <a href="/Cable_Unet/dashboard/canales.php">
+          <a href="Crearcanales.php">
             <i class="pe-7s-film"></i>
             <p>Canales</p>
           </a>

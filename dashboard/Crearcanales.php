@@ -1,7 +1,6 @@
 <?php
   include 'header.php';
   include 'sidebar.php';
-  require '../functions/autoload_class.php';
 ?>
   <div class="main-panel">
     <?php include 'navbar.php' ?>
