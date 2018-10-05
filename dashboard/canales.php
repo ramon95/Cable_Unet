@@ -1,10 +1,10 @@
 <?php
-  include '../header.php';
-  include '../sidebar.php';
-  require '../../functions/autoload_class.php';
+  include 'header.php';
+  include 'sidebar.php';
+  require '../functions/autoload_class.php';
 ?>
   <div class="main-panel">
-    <?php include '../navbar.php' ?>
+    <?php include 'navbar.php' ?>
     <div class="content">
       <div class="container-fluid">
         <div class="row">
@@ -43,7 +43,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <button class="btn btn-success" type="submit"><i class="fa  fa-upload"></i> Crear</button>
+                      <button class="btn btn-success" type="submit">Crear</button>
                     </div>
                   </form>
                 </div>
@@ -66,30 +66,30 @@
         </div>
       </div>
     </div>
-    <?php include '../footer.php'; ?>
+    <?php include 'footer.php'; ?>
   </body>
 
     <!--   Core JS Files   -->
-  <script src="../../assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-  <script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+  <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
 
   <!--  Charts Plugin -->
-  <script src="../../assets/js/chartist.min.js"></script>
+  <script src="../assets/js/chartist.min.js"></script>
 
     <!--  Notifications Plugin    -->
-    <script src="../../assets/js/bootstrap-notify.js"></script>
+    <script src="../assets/js/bootstrap-notify.js"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-  <script src="../../assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+  <script src="../assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
   <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-  <script src="../../assets/js/demo.js"></script>
+  <script src="../assets/js/demo.js"></script>
 
   <!-- script para el select 2 -->
-  <script src="../../assets/js/select2.full.min.js"></script>
+  <script src="../assets/js/select2.full.min.js"></script>
 
   <!-- script para separar los numeros en unidades -->
-  <script src="../../assets/js/jquery.inputmask.bundle.js" charset="utf-8"></script>
+  <script src="../assets/js/jquery.inputmask.bundle.js" charset="utf-8"></script>
   <script type="text/javascript">
     $('.select2').select2();
     //enmascaramiento
@@ -103,7 +103,7 @@
     });
     //llenado de tabla de canales
     $.ajax({
-      url: '../../functions/canales/select.php',
+      url: '../functions/canales/select.php',
     })
     .done(function(result) {
       if (result == '') {
@@ -116,7 +116,7 @@
     })
     //////////////////////////////////////Ajax para llenar el select de dias///////////////////////////////////////////////////////////
     $.ajax({
-      url: '../../functions/dias/select.php'
+      url: '../functions/dias/select.php'
     })
     .done(function(result){
       $('#DiasSemana').append(result)
@@ -126,7 +126,7 @@
     })
     //////////////////////////////////////Ajax para llenar el select de horas//////////////////////////////////////////////////////////
     $.ajax({
-      url: '../../functions/horas/select.php'
+      url: '../functions/horas/select.php'
     })
     .done(function(result){
       $('#HorasDia').append(result)

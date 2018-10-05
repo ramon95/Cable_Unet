@@ -30,12 +30,6 @@ class Canal
     $this->id = $this->con->real_escape_string($id);
   }
 
-  public function select(): mysqli_result
-  {
-    $query = "SELECT * FROM `canales`";
-    return $this->con->query($query);
-  }
-
   public function insert(): int
   {
     $query = "INSERT INTO `canales`(`nombre`, `precio`) VALUES ('$this->nombre',$this->precio)";
@@ -45,15 +39,10 @@ class Canal
     return 0;
   }
 
-  public function update(): int
+  public function select(): mysqli_result
   {
-    if ($this->img) {
-      $query = "UPDATE `articulo` SET `categoria_id`= $this->categorie_id, `titulo`= '$this->title', `contenido`= '$this->content', `img`='$this->img' WHERE `articulo_id` = $this->article_id";
-    } else{
-      $query = "UPDATE `articulo` SET `categoria_id`= $this->categorie_id, `titulo`= '$this->title', `contenido`= '$this->content' WHERE `articulo_id` = $this->article_id";
-    }
-    $this->con->query($query);
-    return $this->con->affected_rows;
+    $query = "SELECT * FROM `canales`";
+    return $this->con->query($query);
   }
 
   public function delete(): int
@@ -61,5 +50,11 @@ class Canal
     $query = "DELETE FROM `canales` WHERE `id` = $this->id";
     $this->con->query($query);
     return $this->con->affected_rows;
+  }
+
+  public function select_by_id(): mysqli_result
+  {
+    $query = "SELECT * FROM `canales` WHERE `id` = $this->id";
+    return $this->con->query($query);
   }
 }
