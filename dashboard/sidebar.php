@@ -24,6 +24,13 @@
             <p>Telefonia</p>
           </a>
         </li>
+        <li>
+          <a href="CrearInternet.php">
+            <i class="pe-7s-signal"></i>
+            <p>Internet</p>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
+pe-7s-signal
