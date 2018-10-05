@@ -6,5 +6,5 @@
   $canal->setId($_GET['id']);
   $canal->delete();
 
-  header('location: ../../dashboard/canales.php');
+  header('location: ../../dashboard/Crearcanales.php');
 ?>

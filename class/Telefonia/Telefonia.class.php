@@ -38,22 +38,19 @@ class Telefonia
 
   public function insert(): int
   {
-    $query = "INSERT INTO `telefonia` (`id`, `nombre`, `precio`, `cantMin`) VALUES ('$this->nombre',$this->precio)";
-    if($this->con->query($query)){
-      return $last_id = $this->con->insert_id;
-    }
-    return 0;
+    $query = "INSERT INTO `telefonia` (`nombre`, `precio`, `cantMin`) VALUES ('$this->nombre',$this->precio, $this->cantMin)";
+    return $this->con->query($query);
   }
 
   public function select(): mysqli_result
   {
-    $query = "SELECT * FROM `canales`";
+    $query = "SELECT * FROM `telefonia`";
     return $this->con->query($query);
   }
 
   public function delete(): int
   {
-    $query = "DELETE FROM `canales` WHERE `id` = $this->id";
+    $query = "DELETE FROM `telefonia` WHERE `id` = $this->id";
     $this->con->query($query);
     return $this->con->affected_rows;
   }

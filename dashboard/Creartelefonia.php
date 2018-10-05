@@ -20,7 +20,7 @@
                 </div>
                 <div class="collapse" id="form0">
                   <hr>
-                  <form method="POST" action="../functions/canales/insert.php" accept-charset="UTF-8">
+                  <form method="POST" action="../functions/telefonia/insert.php" accept-charset="UTF-8">
                     <div class="row">
                       <div class="form-group col-md-6">
                         <label for="NombreCanal">Nombre del canal</label>
@@ -30,15 +30,9 @@
                         <label for="PrecioCanal">Precio del canal</label>
                         <input type="text" name="PrecioCanal" class="form-control trucated" required maxlength="45">
                       </div>
-                      <div class="form-group col-md-6">
-                        <label for="DiasSemana">Dias a la Semana</label>
-                         <select class="form-control select2 select2-hidden-accessible" name="DiasSemana[]" multiple style="width: 100%;" tabindex="-1" aria-hidden="true" required id="DiasSemana">
-                        </select>
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="HorasDia">Horas al dia</label>
-                         <select class="form-control select2 select2-hidden-accessible" name="HorasDia[]" multiple style="width: 100%;" tabindex="-1" aria-hidden="true" required id="HorasDia">
-                        </select>
+                      <div class="form-group col-md-12">
+                        <label for="CantMin">Cantidad de minutos</label>
+                        <input type="number" name="CantMin" class="form-control trucated" required min="0">
                       </div>
                     </div>
                     <div class="form-group">
@@ -52,7 +46,8 @@
                     <tr>
                       <th>Nombre</th>
                       <th>Precio</th>
-                      <th>Editar</th>
+                      <th>Cantidad de minutos</th>
+                      <!-- <th>Editar</th> -->
                       <th>Eliminar</th>
                     </tr>
                   </thead>
@@ -102,36 +97,16 @@
     });
     //llenado de tabla de canales
     $.ajax({
-      url: '../functions/canales/select.php',
+      url: '../functions/telefonia/select.php',
     })
     .done(function(result) {
       if (result == '') {
-        $('#canales').append('<tr><th colspan="3">Sin datos</th></tr>');
+        $('#canales').append('<tr><th colspan="5">Sin datos</th></tr>');
       }
       $('#canales').append(result);
     })
     .fail(function() {
       console.log("error");
-    })
-    //////////////////////////////////////Ajax para llenar el select de dias///////////////////////////////////////////////////////////
-    $.ajax({
-      url: '../functions/dias/select.php'
-    })
-    .done(function(result){
-      $('#DiasSemana').append(result)
-    })
-    .fail(function(){
-      console.log('error ')
-    })
-    //////////////////////////////////////Ajax para llenar el select de horas//////////////////////////////////////////////////////////
-    $.ajax({
-      url: '../functions/horas/select.php'
-    })
-    .done(function(result){
-      $('#HorasDia').append(result)
-    })
-    .fail(function(){
-      console.log('error ')
     })
   </script>
 

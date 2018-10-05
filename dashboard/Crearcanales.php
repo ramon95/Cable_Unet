@@ -52,7 +52,7 @@
                     <tr>
                       <th>Nombre</th>
                       <th>Precio</th>
-                      <th>Editar</th>
+                      <!-- <th>Editar</th> -->
                       <th>Eliminar</th>
                     </tr>
                   </thead>
@@ -106,7 +106,7 @@
     })
     .done(function(result) {
       if (result == '') {
-        $('#canales').append('<tr><th colspan="3">Sin datos</th></tr>');
+        $('#canales').append('<tr><th colspan="4">Sin datos</th></tr>');
       }
       $('#canales').append(result);
     })

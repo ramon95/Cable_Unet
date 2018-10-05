@@ -13,4 +13,6 @@ spl_autoload_register(function ($class) {
     require DIR . "/Cable_Unet/class/Canal/$class.class.php";
   elseif (strpos($class, 'DiaSemana') !== false)
     require DIR . "/Cable_Unet/class/DiaSemana/$class.class.php";
+  elseif (strpos($class, 'Telefonia') !== false)
+    require DIR . "/Cable_Unet/class/Telefonia/$class.class.php";
 });
