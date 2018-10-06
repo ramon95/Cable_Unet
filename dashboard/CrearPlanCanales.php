@@ -10,29 +10,29 @@
           <div class="col-md-12">
             <div class="card">
               <div class="header">
-                <h4 class="title">Internet</h4>
+                <h4 class="title">Planes de Canales</h4>
               </div>
               <div class="content">
                 <div class="row">
                   <div class="col col-sm-8">
-                    <a class="btn btn-success" role="button" data-toggle="collapse" href="#form0" aria-expanded="false" aria-controls="collapseExample"><i class="pe-7s-signal"></i> Crear servicio de Inernet</a>
+                    <a class="btn btn-success" role="button" data-toggle="collapse" href="#form0" aria-expanded="false" aria-controls="collapseExample"><i class="pe-7s-phone"></i> Crear Plan de Canales</a>
                   </div>
                 </div>
                 <div class="collapse" id="form0">
                   <hr>
-                  <form method="POST" action="../functions/internet/insert.php" accept-charset="UTF-8">
+                  <form method="POST" action="../functions/telefonia/insert.php" accept-charset="UTF-8">
                     <div class="row">
                       <div class="form-group col-md-6">
-                        <label for="NombreCanal">Nombre del plan de internet</label>
+                        <label for="NombreCanal">Nombre del plan telefonico</label>
                         <input type="text" name="NombreCanal" class="form-control" required maxlength="45">
                       </div>
                       <div class="form-group col-md-6">
-                        <label for="PrecioCanal">Precio del plan de internet</label>
+                        <label for="PrecioCanal">Precio del plan telefonico</label>
                         <input type="text" name="PrecioCanal" class="form-control trucated" required maxlength="45">
                       </div>
                       <div class="form-group col-md-12">
-                        <label for="CantMin">Cantidad de megabyte</label>
-                        <input type="number" name="CantMB" class="form-control trucated" required min="0">
+                        <label for="CantMin">Cantidad de minutos</label>
+                        <input type="number" name="CantMin" class="form-control trucated" required min="0">
                       </div>
                     </div>
                     <div class="form-group">
@@ -46,7 +46,7 @@
                     <tr>
                       <th>Nombre</th>
                       <th>Precio</th>
-                      <th>Cantidad de megabyte</th>
+                      <th>Cantidad de minutos</th>
                       <!-- <th>Editar</th> -->
                       <th>Eliminar</th>
                     </tr>
@@ -97,7 +97,7 @@
     });
     //llenado de tabla de canales
     $.ajax({
-      url: '../functions/internet/select.php',
+      url: '../functions/telefonia/select.php',
     })
     .done(function(result) {
       if (result == '') {

@@ -27,7 +27,7 @@
                         <input type="text" name="NombreCanal" class="form-control" required maxlength="45">
                       </div>
                       <div class="form-group col-md-6">
-                        <label for="PrecioCanal">Precio del canal</label>
+                        <label for="PrecioCanal">Precio del plan telefonico</label>
                         <input type="text" name="PrecioCanal" class="form-control trucated" required maxlength="45">
                       </div>
                       <div class="form-group col-md-12">
